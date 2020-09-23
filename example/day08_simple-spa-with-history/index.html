@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day08 | Simple SPA with history</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li><a href="Home">主頁</a></li>
+      <li><a href="About">關於</a></li>
+      <li><a href="Contact">聯繫</a></li>
+    </ul>
+
+    <section id="wrapper"></section>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.js"
+      integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      //綁定渲染元素
+      const wrapper = document.querySelector("#wrapper");
+
+      //判斷目前頁面
+      function renderByUrl(url) {
+        console.log("目前路徑為:", url);
+        if (url === "/" || url === "/Home") {
+          wrapper.innerHTML = "這是主頁";
+        } else if (url === "/About") {
+          wrapper.innerHTML = "這是關於頁";
+        } else if (url === "/Contact") {
+          wrapper.innerHTML = "這是聯繫頁";
+        }
+      }
+
+      //監聽網址改變事件
+      $(".nav a").on("click", function (e) {
+        //取消超連結預設行為
+        e.preventDefault();
+        //改變網址
+        history.pushState(null, null, $(this).attr("href"));
+        //使用location.pathname判斷頁面內容
+        renderByUrl(location.pathname);
+      });
+
+      //監聽載入後的頁面
+      window.addEventListener("load", function () {
+        //這時location.pathname為'/'
+        renderByUrl(location.pathname);
+      });
+
+      //監聽歷史紀錄變化
+      window.addEventListener("popstate", function () {
+        //使用location.pathname判斷頁面內容
+        renderByUrl(location.pathname);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+//引入scss變數
+@import 'variables';
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+/* -----google font----- */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300|Roboto&display=swap');

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>component</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      //1.建立Component
+      function Welcome(props) {
+        return (
+          <h1>
+            Hello, My name is {props.name}. I am {props.age} years old.
+          </h1>
+        );
+      }
+
+      //2.將props變數帶入Component
+      const element = <Welcome name="Jason" age="30" />;
+
+      //3.渲染元件
+      ReactDOM.render(element, document.getElementById("root"));
+    </script>
+  </body>
+</html>

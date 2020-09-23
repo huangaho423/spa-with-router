@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day09 | Simple SPA with hash</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="#/Home">主頁</a></li>
+      <li><a href="#/About">關於</a></li>
+      <li><a href="#/Contact">聯繫</a></li>
+    </ul>
+
+    <section id="wrapper"></section>
+
+    <script>
+      //綁定渲染元素
+      const wrapper = document.querySelector("#wrapper");
+
+      //判斷目前頁面
+      function renderByUrl(url) {
+        console.log("目前路徑為:", url);
+        //若沒有hash值預設導向至#/
+        if (location.hash === "") {
+          location.href = "#/";
+          return;
+        }
+        if (url === "#/" || url === "#/Home") {
+          wrapper.innerHTML = "這是主頁";
+        } else if (url === "#/About") {
+          wrapper.innerHTML = "這是關於頁";
+        } else if (url === "#/Contact") {
+          wrapper.innerHTML = "這是聯繫頁";
+        } else {
+          wrapper.innerHTML = "找不到頁面";
+        }
+      }
+
+      //載入事件
+      window.addEventListener("load", function () {
+        //使用location.hash判斷頁面內容
+        renderByUrl(location.hash);
+      });
+
+      //監聽網址改變事件
+      window.addEventListener("hashchange", function () {
+        //使用location.hash判斷頁面內容
+        renderByUrl(location.hash);
+      });
+    </script>
+  </body>
+</html>
