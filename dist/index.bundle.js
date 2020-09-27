@@ -94,19 +94,67 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/style.scss */ \"./src/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _pages_home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/home */ \"./src/pages/home.js\");\n\n\ndocument.querySelector('#wrapper').innerHTML = _pages_home__WEBPACK_IMPORTED_MODULE_1__[\"home\"];\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scss/style.scss */ \"./src/scss/style.scss\");\n/* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _routes_Router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes/Router */ \"./src/routes/Router.js\");\n//引入scss\n //Router\n\n //監聽路由&加載事件\n\nwindow.addEventListener('hashchange', _routes_Router__WEBPACK_IMPORTED_MODULE_1__[\"Router\"]);\nwindow.addEventListener('load', _routes_Router__WEBPACK_IMPORTED_MODULE_1__[\"Router\"]);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/pages/home.js":
+/***/ "./src/pages/Home.js":
 /*!***************************!*\
-  !*** ./src/pages/home.js ***!
+  !*** ./src/pages/Home.js ***!
   \***************************/
-/*! exports provided: home */
+/*! exports provided: Home */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"home\", function() { return home; });\nvar home = \"<h1 class=\\\"text-primary\\\">Hello,world!</h1>\";\n\n//# sourceURL=webpack:///./src/pages/home.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Home\", function() { return Home; });\nvar Home = {\n  render: function render() {\n    return \"<h1>Home page</h1>\";\n  }\n};\n\n//# sourceURL=webpack:///./src/pages/Home.js?");
+
+/***/ }),
+
+/***/ "./src/pages/NotFound.js":
+/*!*******************************!*\
+  !*** ./src/pages/NotFound.js ***!
+  \*******************************/
+/*! exports provided: NotFound */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"NotFound\", function() { return NotFound; });\nvar NotFound = {\n  render: function render() {\n    return \"<h1>This page not found!</h1>\";\n  }\n};\n\n//# sourceURL=webpack:///./src/pages/NotFound.js?");
+
+/***/ }),
+
+/***/ "./src/pages/Post.js":
+/*!***************************!*\
+  !*** ./src/pages/Post.js ***!
+  \***************************/
+/*! exports provided: Post */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Post\", function() { return Post; });\nvar Post = {\n  render: function render() {\n    return \"<h1>Post page</h1>\";\n  }\n};\n\n//# sourceURL=webpack:///./src/pages/Post.js?");
+
+/***/ }),
+
+/***/ "./src/routes/Route.js":
+/*!*****************************!*\
+  !*** ./src/routes/Route.js ***!
+  \*****************************/
+/*! exports provided: Route */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Route\", function() { return Route; });\n/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/Home */ \"./src/pages/Home.js\");\n/* harmony import */ var _pages_Post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/Post */ \"./src/pages/Post.js\");\n//引入Component\n\n //設定路徑並對應Component\n\nvar Route = [{\n  path: '/',\n  component: _pages_Home__WEBPACK_IMPORTED_MODULE_0__[\"Home\"]\n}, {\n  path: '/post',\n  component: _pages_Post__WEBPACK_IMPORTED_MODULE_1__[\"Post\"]\n}];\n\n//# sourceURL=webpack:///./src/routes/Route.js?");
+
+/***/ }),
+
+/***/ "./src/routes/Router.js":
+/*!******************************!*\
+  !*** ./src/routes/Router.js ***!
+  \******************************/
+/*! exports provided: Router */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Router\", function() { return Router; });\n/* harmony import */ var _Route__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Route */ \"./src/routes/Route.js\");\n/* harmony import */ var _pages_NotFound__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/NotFound */ \"./src/pages/NotFound.js\");\n// 引入路徑模組\n // 找不到頁面\n\n // 找出對應元件\n// path:目前路徑,routes:路徑設定\n\nvar getComponent = function getComponent(path, routes) {\n  var result = routes.find(function (r) {\n    return r.path.match(new RegExp(\"^\".concat(path, \"$\")));\n  }) || {};\n  return result;\n};\n\nvar Router = function Router() {\n  // 0.若沒有hash則強制加入預設路徑\n  if (!location.hash) {\n    location.hash = '/';\n  } // 1.得到目前路徑(對應routes)\n\n\n  var path = location.hash.slice(1).toLowerCase(); // 2.找出對應頁面\n  // ES6 解構賦值\n\n  var _getComponent = getComponent(path, _Route__WEBPACK_IMPORTED_MODULE_0__[\"Route\"]),\n      _getComponent$compone = _getComponent.component,\n      component = _getComponent$compone === void 0 ? _pages_NotFound__WEBPACK_IMPORTED_MODULE_1__[\"NotFound\"] : _getComponent$compone; // 3.將元件內容渲染至畫面\n\n\n  document.querySelector('#wrapper').innerHTML = component.render();\n};\n\n//# sourceURL=webpack:///./src/routes/Router.js?");
 
 /***/ }),
 

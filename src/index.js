@@ -1,4 +1,9 @@
+//引入scss
 import './scss/style.scss'
-import { home } from './pages/home'
 
-document.querySelector('#wrapper').innerHTML = home
+//Router
+import { Router } from './routes/Router'
+
+//監聽路由&加載事件
+window.addEventListener('hashchange', Router)
+window.addEventListener('load', Router)

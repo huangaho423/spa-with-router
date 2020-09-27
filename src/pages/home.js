@@ -1,1 +1,5 @@
-export const home = `<h1 class="text-primary">Hello,world!</h1>`
+export const Home = {
+  render: () => {
+    return `<h1>Home page</h1>`
+  },
+}
