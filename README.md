@@ -7,14 +7,14 @@ Node.js + webpack
 1. 下載後執行以下程式碼：
 
 ```
-//1.安裝套件
+//安裝套件
 npm install
 
-//2.執行webpack
+//執行webpack
 npm run build
 
-//3.啟動server
+//啟動server
 npm start
 ```
 
-2. 範例檔置放在 example 目錄
+2. example 目錄為每天實做範例檔

@@ -1,9 +1,11 @@
-// @import 'variables';
+//引入scss變數
+@import 'variables';
 
-// // Import Bootstrap and its default variables
-// @import '~bootstrap/scss/bootstrap.scss';
+// 從node_modules裡引入
+@import '~bootstrap/scss/bootstrap.scss';
 
-// /* -----google font----- */
-// @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:300|Roboto&display=swap');
+// 引入google font
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+//引入自訂義樣式
 @import 'custom';

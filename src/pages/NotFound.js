@@ -1,5 +1,12 @@
+import { App } from './App'
+
 export const NotFound = {
   render: () => {
-    return `<h1>This page not found!</h1>`
+    const content = `
+      <div class="container">
+        <h1>This page not found!</h1>
+      </div>
+    `
+    return App.render(content)
   },
 }
