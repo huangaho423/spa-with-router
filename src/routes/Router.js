@@ -2,6 +2,12 @@
 import { Route } from './Route'
 // 找不到頁面
 import { NotFound } from '../pages/NotFound'
+//引入監聽處理
+import {
+  eventHandlers,
+  addListener,
+  removeAllListeners,
+} from '../utils/eventListerer'
 
 // 找出對應元件
 // path:目前路徑,routes:路徑設定
@@ -80,4 +86,23 @@ export const Router = () => {
   const { component = NotFound, props = {} } = getComponent(path, Route)
   // 3.將元件內容渲染至畫面
   document.querySelector('#wrapper').innerHTML = component.render(props)
+  // 4.元件render後呼叫
+  'mount' in component ? component.mount() : null
+  // 5.處理監聽事件
+  // 取消全部監聽事件
+  removeAllListeners(document.querySelector('body'))
+
+  // 註冊元件內監聽事件
+  'listener' in component
+    ? Object.keys(component.listener).forEach((type) =>
+        addListener(
+          document.querySelector('body'),
+          type,
+          component.listener[type]
+        )
+      )
+    : null
+
+  // 查看handlers
+  console.log(eventHandlers)
 }
