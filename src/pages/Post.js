@@ -4,7 +4,7 @@ export const Post = {
   listener: {
     click: (e) => {
       if (e.target.id === 'button') {
-        console.log('body clicked')
+        console.log('post button clicked')
       }
     },
   },

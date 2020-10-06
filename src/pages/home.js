@@ -1,15 +1,36 @@
 import { App } from './App'
 import $ from 'jquery'
+import { loading } from '../utils/func'
+
+const showModal = () => {
+  $('#modal').modal('show')
+}
 
 export const Home = {
+  func: {
+    showModal: () => {
+      $('#modal').modal('show')
+    },
+  },
+  listener: {
+    click: function (e) {
+      if (e.target.id === 'button') {
+        //呼叫modal
+        Home.func.showModal()
+      }
+    },
+  },
   state: {
     //預設顯示狀態
     show: true,
   },
   mount: function () {
+    //顯示讀取
+    loading()
+
     if (this.state.show === true) {
       //呼叫modal
-      $('#modal').modal('show')
+      Home.func.showModal()
     }
     //寫入狀態
     this.state.show = false
@@ -36,7 +57,7 @@ export const Home = {
       <div class="container">
         <h1>Home page</h1>
         <div>Welcome to my page!</div>
-        <!-- <div>這是您第<span id="visited"></span>次造訪頁面</div> -->
+        <button class="btn btn-primary" id="button">顯示公告</button>
       </div>
       ${modal}
     `
