@@ -13,7 +13,7 @@ export const Navbar = `
                     <a class="nav-link" href="#/post">Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/product">Product</a>
+                    <a class="nav-link" href="#/product/shoes">Product</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

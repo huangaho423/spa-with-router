@@ -3,11 +3,7 @@ import { Route } from './Route'
 // 找不到頁面
 import { NotFound } from '../pages/NotFound'
 //引入監聽處理
-import {
-  eventHandlers,
-  addListener,
-  removeAllListeners,
-} from '../utils/eventListerer'
+import { addListener, removeAllListeners } from '../utils/eventListerer'
 
 // 找出對應元件
 // path:目前路徑,routes:路徑設定
@@ -28,7 +24,7 @@ const getComponent = (path, routes) => {
     result = routes.find((route) => {
       //找尋設定參數目錄(:)
       if (route.path.match(/\/:/g)) {
-        //傳入參數
+        //傳入參數初始化
         route.props = {}
         //當前routes路徑目錄陣列(去除無效值)
         let routesArry = route.path.split('/').filter((a) => a)
@@ -67,6 +63,7 @@ const getComponent = (path, routes) => {
       return false
     })
   }
+  // STEP4:返回結果
   return result || {}
 }
 
@@ -80,7 +77,7 @@ export const Router = () => {
   // 2.找出對應頁面
   // ES6 解構賦值
   const { component = NotFound, props = {} } = getComponent(path, Route)
-  console.log('props:', props)
+  console.log(props)
   // 3.將元件內容渲染至畫面
   document.querySelector('#wrapper').innerHTML = component.render(props)
   // 4.元件render後呼叫
@@ -95,7 +92,4 @@ export const Router = () => {
         addListener(type, component.listener[type])
       )
     : null
-
-  // 查看handlers
-  // console.log('eventHandlers:', eventHandlers)
 }
