@@ -1,12 +1,9 @@
 body {
-  font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-// .modal-backdrop {
-//   ~ .modal {
-//     z-index: $zindex-modal + 10;
-//     + .modal-backdrop {
-//       z-index: $zindex-modal-backdrop + 10;
-//     }
-//   }
-// }
+.product-img {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+}

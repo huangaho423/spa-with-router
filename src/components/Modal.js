@@ -10,7 +10,7 @@ export const Modal = (id, content, callback, removeModal = true) => {
     }
   }
 
-  //判斷畫面中是否有modal
+  //新增部份：判斷畫面中是否有modal
   let zIndexLevel =
       document.querySelectorAll('[data-modal="true"]').length * 10,
     zIndexModal = 1050,
@@ -25,8 +25,10 @@ export const Modal = (id, content, callback, removeModal = true) => {
   modal.setAttribute('data-modal', 'true')
   //設定modal是否可被使用者取消
   modal.setAttribute('data-backdrop', 'static')
-  //?處理modal本身的z-index
+
+  //新增部份：處理modal本身的z-index
   modal.style.zIndex = zIndexModal + zIndexLevel
+
   modal.innerHTML = `
     <div class="modal-dialog">
       <div class="modal-content">
@@ -41,7 +43,7 @@ export const Modal = (id, content, callback, removeModal = true) => {
   //4.執行跳出
   $(`#${id}`).modal('show')
 
-  //?處理Backdrop z-index
+  //新增部份：處理Backdrop z-index
   document.querySelector('.modal-backdrop:last-child').style.zIndex =
     zIndexBackdrop + zIndexLevel
 

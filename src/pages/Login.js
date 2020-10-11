@@ -1,11 +1,6 @@
-import fontawesome from '@fortawesome/fontawesome'
-import { faUser, faKey } from '@fortawesome/fontawesome-free-solid'
-
-fontawesome.library.add(faUser, faKey)
-
 export const Login = {
-  render: () => {
-    return `
+    render: () => {
+        return `
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4 py-5">
@@ -31,5 +26,5 @@ export const Login = {
             </div>
         </div>
     `
-  },
+    },
 }

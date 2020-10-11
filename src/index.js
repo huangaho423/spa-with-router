@@ -1,5 +1,9 @@
+//引入bootstrap的必要檔案
 import 'jquery'
 import 'bootstrap/dist/js/bootstrap.bundle'
+
+//引入fontawesome
+import '@fortawesome/fontawesome-free-solid'
 
 //引入scss
 import './scss/style.scss'

@@ -77,7 +77,6 @@ export const Router = () => {
   // 2.找出對應頁面
   // ES6 解構賦值
   const { component = NotFound, props = {} } = getComponent(path, Route)
-  console.log(props)
   // 3.將元件內容渲染至畫面
   document.querySelector('#wrapper').innerHTML = component.render(props)
   // 4.元件render後呼叫
